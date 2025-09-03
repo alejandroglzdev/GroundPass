@@ -28,25 +28,36 @@ struct HomeView: View {
             }
             
             List {
-                Section {
-                    SatellitePassRow(imageURL: nil)
-                    SatellitePassRow(imageURL: nil)
-                    SatellitePassRow(imageURL: nil)
-                } header: {
-                    ListHeaderText(text: "GroundPass")
-                        .frame(maxWidth: .infinity, alignment: .center)
+                if viewModel.isLoading {
+                    HStack {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding()
+                    }
+                } else {
+                    Section {
+                        ForEach(viewModel.passes, id: \.id) { pass in
+                            SatellitePassRow(imageURL: nil)
+                        }
+                    } header: {
+                        ListHeaderText(text: "GroundPass")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    .textCase(nil)
                 }
-                .textCase(nil)
             }
             .listStyle(InsetGroupedListStyle())
             .scrollContentBackground(.hidden)
             .frame(height: 350)
             
             HStack {
-                Spacer()
-                RoundedButton(action: { fetchFavouritesSatellitesVisualPasses() }, text: L10n.Home.showMoreButtonText)
-                    .padding(.trailing, 16)
-                    .padding(.top, 12)
+                if !viewModel.isLoading {
+                    Spacer()
+                    RoundedButton(action: { fetchFavouritesSatellitesVisualPasses() }, text: L10n.Home.showMoreButtonText)
+                        .padding(.trailing, 16)
+                        .padding(.top, 12)
+                }
             }
         }
         .frame(maxHeight: .infinity, alignment: .top)

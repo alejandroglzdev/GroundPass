@@ -10,6 +10,7 @@ import SwiftUI
 @MainActor
 final class HomeViewModel: ObservableObject {
     @Published var passes: [VisualPass] = []
+    @Published var isLoading: Bool = false
     
     private let n2yoService = N2YOService()
     private let locationService = LocationService()
@@ -19,6 +20,7 @@ final class HomeViewModel: ObservableObject {
     private var altitude: Double?
     
     func fetchFavouritesSatellitesVisualPasses(favouriteSatellites: [FavouriteSatellite]) {
+        isLoading = true
         locationService.requestLocation { lat, lon, alt in
             self.latitude = lat
             self.longitude = lon
@@ -36,14 +38,16 @@ final class HomeViewModel: ObservableObject {
         guard let latitude = latitude,
               let longitude = longitude,
               let altitude = altitude else { return }
-        
-        let result = await n2yoService.getVisualPasses(noradId: noradId, latitude: latitude, longitude: longitude, altitude: altitude, days: APIConfiguration.days, minVisbility: APIConfiguration.minVisibility)
-        
-        switch result {
-        case .success(let passes):
-            self.passes.append(contentsOf: passes)
-        case .failure(_):
-            break
+        Task {
+            defer { isLoading = false }
+            let result = await n2yoService.getVisualPasses(noradId: noradId, latitude: latitude, longitude: longitude, altitude: altitude, days: APIConfiguration.days, minVisbility: APIConfiguration.minVisibility)
+            
+            switch result {
+            case .success(let passes):
+                self.passes.append(contentsOf: passes)
+            case .failure(_):
+                break
+            }
         }
             
     }
