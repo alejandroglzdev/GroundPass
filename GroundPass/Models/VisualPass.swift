@@ -10,6 +10,7 @@ import Foundation
 struct VisualPass: Decodable, Identifiable, Equatable{
     let id = UUID()
     let noradId: Int
+    let satelliteName: String
     let startAz: Double
     let startAzCompass: String
     let startEl: Double
@@ -47,6 +48,7 @@ struct VisualPassResponse: Decodable {
     }
 
     let noradId: Int
+    let satelliteName: String
     let passes: [Pass]
 
     private enum CodingKeys: String, CodingKey {
@@ -56,12 +58,14 @@ struct VisualPassResponse: Decodable {
 
     private enum InfoKeys: String, CodingKey {
         case satid
+        case satname
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let infoContainer = try container.nestedContainer(keyedBy: InfoKeys.self, forKey: .info)
         noradId = try infoContainer.decode(Int.self, forKey: .satid)
+        satelliteName = try infoContainer.decode(String.self, forKey: .satname)
         passes = try container.decode([Pass].self, forKey: .passes)
     }
 }

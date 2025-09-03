@@ -5,9 +5,9 @@
 //  Created by Alejandro Gonzalez2 on 26/8/25.
 //
 
-import Combine
 import SwiftUI
 
+@MainActor
 final class HomeViewModel: ObservableObject {
     @Published var passes: [VisualPass] = []
     

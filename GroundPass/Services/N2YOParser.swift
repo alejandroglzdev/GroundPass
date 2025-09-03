@@ -18,6 +18,7 @@ final class N2YOParser {
             return fullResponse.passes.map { pass in
                 VisualPass(
                     noradId: fullResponse.noradId,
+                    satelliteName: fullResponse.satelliteName,
                     startAz: pass.startAz,
                     startAzCompass: pass.startAzCompass,
                     startEl: pass.startEl,

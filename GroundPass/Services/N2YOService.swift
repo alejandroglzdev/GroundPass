@@ -7,7 +7,7 @@
 
 import Combine
 
-//@MainActor
+@MainActor
 final class N2YOService: ObservableObject {
     private let networkService = NetworkService()
     
