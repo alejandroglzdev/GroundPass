@@ -22,7 +22,7 @@ struct HomeView: View {
                     .frame(height: 250)
                     .scaledToFit()
 
-                let dayAndHour = "Thursday, 10:00 AM"
+                let dayAndHour = viewModel.dayAndHour
                 HeaderText(text: dayAndHour)
                     .padding([.leading, .bottom], 16)
             }

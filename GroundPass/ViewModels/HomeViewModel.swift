@@ -11,6 +11,7 @@ import SwiftUI
 final class HomeViewModel: ObservableObject {
     @Published var passes: [VisualPass] = []
     @Published var isLoading: Bool = false
+    @Published var dayAndHour: String = ""
     
     private let n2yoService = N2YOService()
     private let locationService = LocationService()
@@ -18,6 +19,39 @@ final class HomeViewModel: ObservableObject {
     private var latitude: Double?
     private var longitude: Double?
     private var altitude: Double?
+    
+    private var hourDateTimer: Timer?
+    
+    init() {
+        updateDayAndHour()
+        scheduleNextUpdate()
+    }
+    
+    deinit {
+        hourDateTimer?.invalidate()
+    }
+    
+    private func updateDayAndHour() {
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEE d, h:mm a"
+        dayAndHour = formatter.string(from: now)
+    }
+    
+    private func scheduleNextUpdate() {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        let nextMinute = calendar.nextDate(after: now, matching: DateComponents(second: 0), matchingPolicy: .nextTime)!
+        let interval = nextMinute.timeIntervalSince(now)
+        
+        hourDateTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { [weak self] _ in
+            Task { @MainActor in
+                self?.updateDayAndHour()
+                self?.scheduleNextUpdate()
+            }
+        }
+    }
     
     func fetchFavouritesSatellitesVisualPasses(favouriteSatellites: [FavouriteSatellite]) {
         isLoading = true
