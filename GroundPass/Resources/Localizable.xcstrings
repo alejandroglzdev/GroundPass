@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "10:15 AM · 270º · 80º · -1,2" : {
-
-    },
     "Home" : {
 
     },
@@ -17,9 +14,6 @@
           }
         }
       }
-    },
-    "ISS" : {
-
     },
     "Next pass" : {
 

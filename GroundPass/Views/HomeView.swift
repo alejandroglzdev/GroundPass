@@ -37,8 +37,8 @@ struct HomeView: View {
                     }
                 } else {
                     Section {
-                        ForEach(viewModel.passes, id: \.id) { pass in
-                            SatellitePassRow(imageURL: nil)
+                        ForEach(viewModel.passes.prefix(3), id: \.id) { pass in
+                            SatellitePassRow(imageURL: nil, visualPass: pass)
                         }
                     } header: {
                         ListHeaderText(text: "GroundPass")
@@ -54,7 +54,7 @@ struct HomeView: View {
             HStack {
                 if !viewModel.isLoading {
                     Spacer()
-                    RoundedButton(action: { fetchFavouritesSatellitesVisualPasses() }, text: L10n.Home.showMoreButtonText)
+                    RoundedButton(action: { /* Navegar a ShowMmore */ }, text: L10n.Home.showMoreButtonText)
                         .padding(.trailing, 16)
                         .padding(.top, 12)
                 }
@@ -63,9 +63,6 @@ struct HomeView: View {
         .frame(maxHeight: .infinity, alignment: .top)
         .ignoresSafeArea()
         .onAppear(perform: fetchFavouritesSatellitesVisualPasses)
-        .onChange(of: viewModel.passes) { passes in
-            print(passes)
-        }
     }
     
     func fetchFavouritesSatellitesVisualPasses() {

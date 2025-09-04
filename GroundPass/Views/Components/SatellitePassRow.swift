@@ -9,14 +9,17 @@ import SwiftUI
 
 struct SatellitePassRow: View {
     let imageURL: URL?
+    let visualPass: VisualPass
     
     var body: some View {
+        let satelliteName = visualPass.satelliteName
+        let detail = "\(visualPass.startUTC.formatToWeekdayDay12HourClock()), · \(visualPass.startAzCompass) to \(visualPass.endAzCompass) · \(visualPass.maxEl)"
+        
         HStack {
             VStack(alignment: .leading) {
                 Text("Next pass").tint(.gray)
-                Text("ISS").fontWeight(.black)
-                Text("10:15 AM · 270º · 80º · -1,2").tint(.gray)
-
+                Text(satelliteName).fontWeight(.black)
+                Text(detail).tint(.gray)
             }
             
             Spacer()

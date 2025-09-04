@@ -44,11 +44,16 @@ final class HomeViewModel: ObservableObject {
             
             switch result {
             case .success(let passes):
-                self.passes.append(contentsOf: passes)
+                setPasses(passes)
             case .failure(_):
                 break
             }
         }
             
+    }
+    
+    func setPasses(_ newPasses: [VisualPass]) {
+        passes.append(contentsOf: newPasses)
+        passes.sort { $0.startUTC < $1.startUTC }
     }
 }
