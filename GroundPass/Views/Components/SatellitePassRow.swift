@@ -17,7 +17,7 @@ struct SatellitePassRow: View {
         
         HStack {
             VStack(alignment: .leading) {
-                Text("Next pass").tint(.gray)
+                Text(L10n.SatellitePassRow.title).tint(.gray)
                 Text(satelliteName).fontWeight(.black)
                 Text(detail).tint(.gray)
             }

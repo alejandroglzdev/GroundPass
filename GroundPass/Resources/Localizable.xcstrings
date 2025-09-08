@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Home" : {
-
-    },
     "home.showMoreButtonText" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14,9 +11,6 @@
           }
         }
       }
-    },
-    "Next pass" : {
-
     },
     "onboarding.action" : {
       "extractionState" : "manual",
@@ -84,6 +78,17 @@
         }
       }
     },
+    "satellitePassRow.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next pass"
+          }
+        }
+      }
+    },
     "showMore.topBarTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -91,6 +96,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "All passes"
+          }
+        }
+      }
+    },
+    "tabBar.home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
           }
         }
       }

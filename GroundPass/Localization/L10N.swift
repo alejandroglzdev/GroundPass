@@ -6,6 +6,10 @@
 //
 
 enum L10n {
+    enum TabBar {
+        static let home = String(localized: "tabBar.home")
+    }
+    
     enum Onboarding {
         static let title = String(localized: "onboarding.title")
         static let body = String(localized: "onboarding.body")
@@ -24,5 +28,9 @@ enum L10n {
     
     enum ShowMore {
         static let topBarTitle = String(localized: "showMore.topBarTitle")
+    }
+    
+    enum SatellitePassRow {
+        static let title = String(localized: "satellitePassRow.title")
     }
 }

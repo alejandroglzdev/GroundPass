@@ -14,7 +14,7 @@ struct MainView: View {
                 HomeView()
                     .tabItem {
                         Image(systemName: "house")
-                        Text("Home")
+                        Text(L10n.TabBar.home)
                     }
             }
         }
