@@ -43,6 +43,9 @@ struct ContentView: View {
                 case .mainView:
                     MainView()
                         .environmentObject(router)
+                case .showMoreView(let passes):
+                    ShowMoreView(passes: passes)
+                        .environmentObject(router)
                 }
             }
         }

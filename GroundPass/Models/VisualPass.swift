@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct VisualPass: Decodable, Identifiable, Equatable{
+struct VisualPass: Decodable, Identifiable, Equatable, Hashable{
     let id = UUID()
     let noradId: Int
     let satelliteName: String

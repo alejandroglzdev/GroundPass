@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "All passes" : {
-
-    },
     "Home" : {
 
     },
@@ -83,6 +80,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Satellites"
+          }
+        }
+      }
+    },
+    "showMore.topBarTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All passes"
           }
         }
       }

@@ -10,6 +10,8 @@ import SwiftData
 
 struct HomeView: View {
     @Environment(\.modelContext) private var context
+    @EnvironmentObject var router: NavigationRouter
+    
     @Query private var favouriteSatellites: [FavouriteSatellite]
     
     @StateObject private var viewModel = HomeViewModel()
@@ -54,7 +56,7 @@ struct HomeView: View {
             HStack {
                 if !viewModel.isLoading {
                     Spacer()
-                    RoundedButton(action: { /* Navegar a ShowMmore */ }, text: L10n.Home.showMoreButtonText)
+                    RoundedButton(action: { router.push(.showMoreView(viewModel.passes)) }, text: L10n.Home.showMoreButtonText)
                         .padding(.trailing, 16)
                         .padding(.top, 12)
                 }

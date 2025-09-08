@@ -21,4 +21,8 @@ enum L10n {
     enum Home {
         static let showMoreButtonText = String(localized: "home.showMoreButtonText")
     }
+    
+    enum ShowMore {
+        static let topBarTitle = String(localized: "showMore.topBarTitle")
+    }
 }
