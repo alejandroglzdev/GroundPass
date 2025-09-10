@@ -41,6 +41,9 @@ struct HomeView: View {
                     Section {
                         ForEach(viewModel.passes.prefix(3), id: \.id) { pass in
                             SatellitePassRow(imageURL: nil, visualPass: pass)
+                                .onTapGesture {
+                                    router.push(.visualPassDetail)
+                                }
                         }
                     } header: {
                         ListHeaderText(text: "GroundPass")
@@ -68,6 +71,7 @@ struct HomeView: View {
     }
     
     func fetchFavouritesSatellitesVisualPasses() {
+        //TODO: Quizas mejor llamar solo cuando se crea la vista
         viewModel.fetchFavouritesSatellitesVisualPasses(favouriteSatellites: favouriteSatellites)
     }
 }
