@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "extensions.int.formatMinuteSeconds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ min %@ sec"
+          }
+        }
+      }
+    },
     "home.showMoreButtonText" : {
       "extractionState" : "manual",
       "localizations" : {

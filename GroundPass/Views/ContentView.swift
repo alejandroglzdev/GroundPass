@@ -46,8 +46,8 @@ struct ContentView: View {
                 case .showMoreView(let passes):
                     ShowMoreView(passes: passes)
                         .environmentObject(router)
-                case .visualPassDetail:
-                    VisualPassDetailView()
+                case .visualPassDetail(let pass):
+                    VisualPassDetailView(pass: pass)
                         .environmentObject(router)
                 }
             }

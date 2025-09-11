@@ -71,4 +71,10 @@ enum L10n {
     enum SatellitePassRow {
         static let title = String(localized: "satellitePassRow.title")
     }
+    
+    enum Extensions {
+        enum Int {
+            static let formatMinuteSeconds = String(localized: "extensions.int.formatMinuteSeconds")
+        }
+    }
 }

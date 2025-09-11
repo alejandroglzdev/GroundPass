@@ -8,7 +8,12 @@
 import SwiftUI
 
 public struct VisualPassDetailView: View {
+    @StateObject private var viewModel: VisualPassDetailViewModel
     @EnvironmentObject var router: NavigationRouter
+    
+    init(pass: VisualPass) {
+        _viewModel = StateObject(wrappedValue: VisualPassDetailViewModel(pass: pass))
+    }
 
     public var body: some View {
         VStack(alignment: .trailing) {
@@ -17,15 +22,31 @@ public struct VisualPassDetailView: View {
                     .resizable()
                     .scaledToFit()
                 
-                DateTimeInfo(start: "2024-03-22 21:45:00 UTC", end: "2024-03-22 21:45:00 UTC").padding(24)
-                DirectionElevationInfo(startAzCompass: "NW", endAzCompass: "SE", maxEl: "45", maxAzCompass: "S", maxUTC: "9:35 PM").padding(24)
-                DurationInfo(duration: "4 min 0 sec").padding(24)
-                VisibilityInfo(magnitude: 4.1, isVisible: true).padding(24)
-                SatelliteDetailInfo(name: "ISS (ZARYA)", noradId: "25544").padding(24)
+                let start = viewModel.pass.startUTC.formattedAsUTCDateTime()
+                let end = viewModel.pass.endUTC.formattedAsUTCDateTime()
+                DateTimeInfo(start: start, end: end).padding(24)
+                
+                let startAzCompass = viewModel.pass.startAzCompass
+                let endAzCompass = viewModel.pass.endAzCompass
+                let maxEl = String(viewModel.pass.maxEl)
+                let maxAzCompass = viewModel.pass.maxAzCompass
+                let maxUTC = viewModel.pass.maxUTC.formattedAs12HourTime()
+                DirectionElevationInfo(startAzCompass: startAzCompass, endAzCompass: endAzCompass, maxEl: maxEl, maxAzCompass: maxAzCompass, maxUTC: maxUTC).padding(24)
+                
+                let duration = viewModel.pass.duration.formattedAsMinutesAndSeconds()
+                DurationInfo(duration: duration).padding(24)
+                
+                let magnitude = viewModel.pass.mag
+                let isVisible = viewModel.pass.isVisible
+                VisibilityInfo(magnitude: magnitude, isVisible: isVisible).padding(24)
+                
+                let satelliteName = viewModel.pass.satelliteName
+                let noradId = String(viewModel.pass.noradId)
+                SatelliteDetailInfo(name: satelliteName, noradId: noradId).padding(24)
 
             }
             
-            RoundedButton(action: {}, text: L10n.VisualPassDetail.button).padding(18)
+            RoundedButton(action: { viewModel.getSolarElevation() }, text: L10n.VisualPassDetail.button).padding(18)
         }
         .navigationTitle(L10n.VisualPassDetail.topBarTitle)
         .navigationBarTitleDisplayMode(.inline)
@@ -45,5 +66,5 @@ public struct VisualPassDetailView: View {
 }
 
 #Preview {
-    VisualPassDetailView()
+
 }

@@ -26,6 +26,9 @@ struct VisualPass: Decodable, Identifiable, Equatable, Hashable{
     let mag: Double
     let duration: Int
     let startVisibility: TimeInterval
+    var isVisible: Bool {
+        true
+    }
 }
 
 struct VisualPassResponse: Decodable {

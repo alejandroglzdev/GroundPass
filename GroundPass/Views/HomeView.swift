@@ -42,7 +42,7 @@ struct HomeView: View {
                         ForEach(viewModel.passes.prefix(3), id: \.id) { pass in
                             SatellitePassRow(imageURL: nil, visualPass: pass)
                                 .onTapGesture {
-                                    router.push(.visualPassDetail)
+                                    router.push(.visualPassDetail(pass))
                                 }
                         }
                     } header: {
