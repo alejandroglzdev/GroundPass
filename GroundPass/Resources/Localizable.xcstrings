@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "\"visualPassDetail.visibilityInfo.visibilityDifficult\"" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difficult"
+          }
+        }
+      }
+    },
     "extensions.int.formatMinuteSeconds" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -306,6 +317,9 @@
           }
         }
       }
+    },
+    "visualPassDetail.visibilityInfo.visibilityDifficult" : {
+
     },
     "visualPassDetail.visibilityInfo.visibilityNo" : {
       "extractionState" : "manual",

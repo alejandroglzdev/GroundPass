@@ -64,6 +64,7 @@ enum L10n {
             static let magnitudeTitle = String(localized: "visualPassDetail.visibilityInfo.magnitudeTitle")
             static let visibilityTitle = String(localized: "visualPassDetail.visibilityInfo.visibilityTitle")
             static let visibilityYes = String(localized: "visualPassDetail.visibilityInfo.visibilityYes")
+            static let visibilityDifficult = String(localized: "visualPassDetail.visibilityInfo.visibilityDifficult")
             static let visibilityNo = String(localized: "visualPassDetail.visibilityInfo.visibilityNo")
         }
     }

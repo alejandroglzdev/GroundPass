@@ -9,14 +9,21 @@ import SwiftUI
 
 struct VisibilityInfo: View {
     let magnitude: Double
-    let isVisible: Bool
+    let satelliteVisibility: SatelliteVisibility
     
     private var formattedMagnitude: String {
         String(format: "%.1f", magnitude)
     }
     
     private var visibilityText: String {
-        isVisible ? L10n.VisualPassDetail.VisibilityInfo.visibilityYes : L10n.VisualPassDetail.VisibilityInfo.visibilityNo
+        switch satelliteVisibility {
+        case .clear:
+            return L10n.VisualPassDetail.VisibilityInfo.visibilityYes
+        case .difficult:
+            return L10n.VisualPassDetail.VisibilityInfo.visibilityDifficult
+        case .notVisible:
+            return L10n.VisualPassDetail.VisibilityInfo.visibilityNo
+        }
     }
     
     var body: some View {
@@ -39,5 +46,5 @@ struct VisibilityInfo: View {
 }
 
 #Preview {
-    VisibilityInfo(magnitude: 4.1, isVisible: true)
+    VisibilityInfo(magnitude: 4.1, satelliteVisibility: .clear)
 }

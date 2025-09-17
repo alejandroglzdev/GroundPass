@@ -22,6 +22,14 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     }
+    
+    func requestLocation() async throws -> (latitude: Double, longitude: Double) {
+        return try await withCheckedThrowingContinuation { continuation in
+            requestLocation { lat, lon, alt in
+                continuation.resume(returning: (lat, lon))
+            }
+        }
+    }
 
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
