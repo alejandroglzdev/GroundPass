@@ -54,6 +54,7 @@ final class HomeViewModel: ObservableObject {
     }
     
     func fetchFavouritesSatellitesVisualPasses(favouriteSatellites: [FavouriteSatellite]) {
+        passes.removeAll()
         isLoading = true
         locationService.requestLocation { lat, lon, alt in
             self.latitude = lat

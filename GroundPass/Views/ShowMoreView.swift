@@ -21,6 +21,9 @@ public struct ShowMoreView: View {
                 Section {
                     ForEach(viewModel.passes, id: \.id) { pass in
                         SatellitePassRow(imageURL: nil, visualPass: pass)
+                            .onTapGesture {
+                                router.push(.visualPassDetail(pass))
+                            }
                     }
                 }
                 .textCase(nil)
