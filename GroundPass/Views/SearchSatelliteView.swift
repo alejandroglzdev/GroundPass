@@ -11,7 +11,7 @@ struct SearchSatelliteView: View {
     @State private var searchText = ""
     
     var body: some View {
-        let popularSatellites = FamousSatellites.all
+        let popularSatellites = PopularSatellites.all
         let rows: [IdentifiableView] = popularSatellites.map { satellite in
             IdentifiableView(view: AnyView(PopularSatelliteRow(satelliteName: satellite.name)))
         }

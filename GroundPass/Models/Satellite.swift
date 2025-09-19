@@ -15,7 +15,7 @@ struct Satellite: Identifiable {
     let imageURL: URL
 }
 
-struct FamousSatellites {
+struct PopularSatellites {
     static let all: [Satellite] = [
         Satellite(
                 name: "Hubble Space Telescope",
