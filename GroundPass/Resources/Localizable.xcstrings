@@ -1,17 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "\"visualPassDetail.visibilityInfo.visibilityDifficult\"" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Difficult"
-          }
-        }
-      }
-    },
     "extensions.int.formatMinuteSeconds" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -111,6 +100,26 @@
         }
       }
     },
+    "searchSatelliteView.popularSatelliteTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popular satellites"
+          }
+        }
+      }
+    },
+    "searchSatelliteView.searchBar.barPlaceholder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        }
+      }
+    },
     "showMore.topBarTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -129,6 +138,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Home"
+          }
+        }
+      }
+    },
+    "tabBar.satellites" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satellites"
           }
         }
       }
@@ -319,7 +338,14 @@
       }
     },
     "visualPassDetail.visibilityInfo.visibilityDifficult" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difficult"
+          }
+        }
+      }
     },
     "visualPassDetail.visibilityInfo.visibilityNo" : {
       "extractionState" : "manual",

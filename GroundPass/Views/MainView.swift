@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
+    init() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.backgroundSecondary
+        
+        UITabBar.appearance().standardAppearance = appearance
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
     var body: some View {
         VStack {
             TabView {
@@ -15,6 +24,11 @@ struct MainView: View {
                     .tabItem {
                         Image(systemName: "house")
                         Text(L10n.TabBar.home)
+                    }
+                SearchSatelliteView()
+                    .tabItem {
+                        Image("satellite_icon")
+                        Text(L10n.TabBar.satellites)
                     }
             }
         }

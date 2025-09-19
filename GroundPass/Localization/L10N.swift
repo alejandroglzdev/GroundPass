@@ -8,6 +8,7 @@
 enum L10n {
     enum TabBar {
         static let home = String(localized: "tabBar.home")
+        static let satellites = String(localized: "tabBar.satellites")
     }
     
     enum Onboarding {
@@ -71,6 +72,14 @@ enum L10n {
     
     enum SatellitePassRow {
         static let title = String(localized: "satellitePassRow.title")
+    }
+    
+    enum SearchSatelliteView {
+        static let popularSatelliteTitle = String(localized: "searchSatelliteView.popularSatelliteTitle")
+        
+        enum SearchBar {
+            static let barPlaceholder = String(localized: "searchSatelliteView.searchBar.barPlaceholder")
+        }
     }
     
     enum Extensions {
