@@ -16,7 +16,7 @@ protocol Request {
 
 extension Request {
     var url: URL? {
-        var components = URLComponents(string: APIConfiguration.baseURL + path)
+        var components = URLComponents(string: APIConfiguration.baseURLN2YO + path)
         components?.queryItems = queryItems
         return components?.url
     }

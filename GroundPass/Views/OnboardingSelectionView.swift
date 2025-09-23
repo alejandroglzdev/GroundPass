@@ -26,12 +26,12 @@ struct OnboardingSelectionView: View {
     }
     
     var body: some View {
-        let famousSatellites = FamousSatellites.all
+        let popularSatellites = PopularSatellites.all
         
         VStack(alignment: .leading) {
             List {
                 Section {
-                    ForEach(famousSatellites) { item in
+                    ForEach(popularSatellites) { item in
                         SatelliteRow(item: item)
                             .padding(.trailing, 32)
                             .overlay(

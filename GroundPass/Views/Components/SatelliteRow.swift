@@ -29,6 +29,6 @@ struct SatelliteRow: View {
 }
 
 #Preview {
-    let famousSatellite = FamousSatellites.all[0]
-    SatelliteRow(item: famousSatellite)
+    let popularSatellite = PopularSatellites.all[0]
+    SatelliteRow(item: popularSatellite)
 }
