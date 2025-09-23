@@ -7,13 +7,19 @@
 
 import SwiftUI
 
-struct PopularSatelliteRow: View {
+struct SearchedSatelliteRow: View {
     let satelliteName: String
+    let noradId: Int
     
     var body: some View {
         HStack(spacing: 20) {
             Image("satellite_icon")
-            Text(satelliteName)
+            VStack(alignment: .leading) {
+                Text(satelliteName).lineLimit(1)
+                Text(String(noradId))
+                    .font(.caption)
+                    .foregroundColor(.gray)
+            }
             Spacer()
         }
         .padding(.horizontal, 16)
@@ -21,8 +27,4 @@ struct PopularSatelliteRow: View {
         .background(Color(UIColor.backgroundSecondary))
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
-}
-
-#Preview {
-    PopularSatelliteRow(satelliteName: "ISS")
 }

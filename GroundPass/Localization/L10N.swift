@@ -76,6 +76,8 @@ enum L10n {
     
     enum SearchSatelliteView {
         static let popularSatelliteTitle = String(localized: "searchSatelliteView.popularSatelliteTitle")
+        static let searchedSatelliteTitle = String(localized: "searchSatelliteView.searchedSatelliteTitle")
+        static let noSatelliteFoundBody = String(localized: "searchSatelliteView.noSatelliteFoundBody")
         
         enum SearchBar {
             static let barPlaceholder = String(localized: "searchSatelliteView.searchBar.barPlaceholder")

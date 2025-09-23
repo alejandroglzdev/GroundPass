@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%lld" : {
+
+    },
     "extensions.int.formatMinuteSeconds" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -100,6 +103,16 @@
         }
       }
     },
+    "searchSatelliteView.noSatelliteFoundBody" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No satellites found. Try another keyword or check the spelling."
+          }
+        }
+      }
+    },
     "searchSatelliteView.popularSatelliteTitle" : {
       "localizations" : {
         "en" : {
@@ -115,7 +128,17 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Search"
+            "value" : "Search by name…"
+          }
+        }
+      }
+    },
+    "searchSatelliteView.searchedSatelliteTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Searched satellites"
           }
         }
       }
