@@ -75,7 +75,7 @@ enum GroundPassBackendEndpoint: Request {
         switch self {
         case .satelliteSearch(let satelliteName):
             return [
-                URLQueryItem(name: "q", value: satelliteName)
+                URLQueryItem(name: "name", value: satelliteName)
             ]
         }
     }
