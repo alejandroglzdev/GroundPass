@@ -46,17 +46,20 @@ enum N2YOEndpoint: Request {
 
 enum GroundPassBackendEndpoint: Request {
     case satelliteSearch(satelliteName: String)
+    case satelliteInfo(noradId: String)
 
     var path: String {
         switch self {
         case .satelliteSearch:
             return "/satelliteSearch"
+        case .satelliteInfo(_):
+            return "/satelliteInfo"
         }
     }
 
     var method: String {
         switch self {
-        case .satelliteSearch:
+        case .satelliteSearch, .satelliteInfo(_):
             return "GET"
         }
     }
@@ -65,6 +68,11 @@ enum GroundPassBackendEndpoint: Request {
         switch self {
         case .satelliteSearch(_):
             let endpoint = "\(path)"
+            var components = URLComponents(string: APIConfiguration.baseURLGroundPassBackend + endpoint)
+            components?.queryItems = queryItems
+            return components?.url
+        case .satelliteInfo(let noradId):
+            let endpoint = "\(path)/\(noradId)"
             var components = URLComponents(string: APIConfiguration.baseURLGroundPassBackend + endpoint)
             components?.queryItems = queryItems
             return components?.url
@@ -77,6 +85,8 @@ enum GroundPassBackendEndpoint: Request {
             return [
                 URLQueryItem(name: "name", value: satelliteName)
             ]
+        case .satelliteInfo(_):
+            return nil
         }
     }
 }

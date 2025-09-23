@@ -8,7 +8,7 @@
 import Foundation
 
 final class GroundPassBackendParser {
-    static func parseSearch(response: Data) -> [Satellite] {
+    static func parseSatellites(response: Data) -> [Satellite] {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
         
@@ -17,6 +17,18 @@ final class GroundPassBackendParser {
             return fullResponse
         } catch {
             return []
+        }
+    }
+    
+    static func parseSatellite(response: Data) -> Satellite? {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        
+        do {
+            let fullResponse = try decoder.decode(Satellite.self, from: response)
+            return fullResponse
+        } catch {
+            return nil
         }
     }
 }

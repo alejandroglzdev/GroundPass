@@ -89,4 +89,40 @@ enum L10n {
             static let formatMinuteSeconds = String(localized: "extensions.int.formatMinuteSeconds")
         }
     }
+    
+    enum SatelliteDetail {
+        static let topBarTitle = String(localized: "satelliteDetail.topBarTitle")
+        static let unknown = String(localized: "satelliteDetail.unknown")
+        static let favouriteButtonText = String(localized: "satelliteDetail.favouriteButtonText")
+        
+        enum LaunchInfo {
+            static let title = String(localized: "satelliteDetail.launchInfo.title")
+            static let dateTitle = String(localized: "satelliteDetail.launchInfo.dateTitle")
+            static let locationTitle = String(localized: "satelliteDetail.launchInfo.locationTitle")
+        }
+        
+        enum OrbitInfo {
+            static let title = String(localized: "satelliteDetail.orbitInfo.title")
+            static let apogeeTitle = String(localized: "satelliteDetail.orbitInfo.apogeeTitle")
+            static let perigeeTitle = String(localized: "satelliteDetail.orbitInfo.perigeeTitle")
+            static let inclinationTitle = String(localized: "satelliteDetail.orbitInfo.inclinationTitle")
+            static let periodTitle = String(localized: "satelliteDetail.orbitInfo.periodTitle")
+            static let apogeeText = String(localized: "satelliteDetail.orbitInfo.apogeeText")
+            static let perigeeText = String(localized: "satelliteDetail.orbitInfo.perigeeText")
+            static let inclinationText = String(localized: "satelliteDetail.orbitInfo.inclinationText")
+            static let periodText = String(localized: "satelliteDetail.orbitInfo.periodText")
+        }
+        
+        enum SatelliteDetailHeader {
+            static let subtitle = String(localized: "satelliteDetail.satelliteDetailHeader.subtitle")
+        }
+        
+        enum StatusInfo {
+            static let title = String(localized: "satelliteDetail.statusInfo.title")
+            static let statusTitle = String(localized: "satelliteDetail.statusInfo.statusTitle")
+            static let typePurposeTitle = String(localized: "satelliteDetail.statusInfo.typePurposeTitle")
+            static let active = String(localized: "satelliteDetail.statusInfo.active")
+            static let inactive = String(localized: "satelliteDetail.statusInfo.inactive")
+        }
+    }
 }

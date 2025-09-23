@@ -49,6 +49,9 @@ struct ContentView: View {
                 case .visualPassDetail(let pass):
                     VisualPassDetailView(pass: pass)
                         .environmentObject(router)
+                case .satelliteDetail(let satellite):
+                    SatelliteDetailView(satellite: satellite)
+                        .environmentObject(router)
                 }
             }
         }

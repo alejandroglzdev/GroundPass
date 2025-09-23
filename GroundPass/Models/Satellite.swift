@@ -7,24 +7,51 @@
 
 import Foundation
 
-struct Satellite: Identifiable, Decodable {
+struct Satellite: Identifiable, Decodable, Equatable, Hashable {
     var id: Int { noradID }
     let name: String
     let noradID: Int
     
     var subtitle: String? = nil
     var imageURL: URL = URL(string: "https://via.placeholder.com/150")!
+    var country: String? = nil
+    var launchDate: String? = nil
+    var launchLocation: String? = nil
+    var apogee: String? = nil
+    var perigee: String? = nil
+    var inclination: String? = nil
+    var period: String? = nil
+    var status: String? = nil
+    var typePurpose: String? = nil
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
         case noradID = "id"
+        case country = "country"
+        case launchDate = "launch"
+        case launchLocation = "site"
+        case apogee = "apogee"
+        case perigee = "perigee"
+        case inclination = "inc"
+        case period = "period"
+        case status = "active"
+        case typePurpose = "type"
     }
     
-    init(name: String, noradID: Int, subtitle: String? = nil, imageURL: URL = URL(string: "https://via.placeholder.com/150")!) {
+    init(name: String, noradID: Int, subtitle: String? = nil, imageURL: URL = URL(string: "https://via.placeholder.com/150")!, country: String? = nil, launchDate: String? = nil, launchLocation: String? = nil, apogee: String = "", perigee: String = "", inclination: String = "", period: String = "", status: String? = nil, typePurpose: String? = nil) {
         self.name = name
         self.noradID = noradID
         self.subtitle = subtitle
         self.imageURL = imageURL
+        self.country = country
+        self.launchDate = launchDate
+        self.launchLocation = launchLocation
+        self.apogee = apogee
+        self.perigee = perigee
+        self.inclination = inclination
+        self.period = period
+        self.status = status
+        self.typePurpose = typePurpose
     }
 
 }
