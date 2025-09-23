@@ -57,7 +57,10 @@ struct HomeView: View {
             .frame(height: 350)
             
             HStack {
-                if !viewModel.isLoading {
+                let isLoading = viewModel.isLoading
+                let moreThanThreePasses = viewModel.passes.count > 3
+                
+                if !isLoading && moreThanThreePasses {
                     Spacer()
                     RoundedButton(action: { router.push(.showMoreView(viewModel.passes)) }, text: L10n.Home.showMoreButtonText)
                         .padding(.trailing, 16)
