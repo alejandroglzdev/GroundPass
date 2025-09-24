@@ -30,6 +30,11 @@ struct MainView: View {
                         Image("satellite_icon")
                         Text(L10n.TabBar.satellites)
                     }
+                SettingsView()
+                    .tabItem {
+                        Image(systemName: "gear")
+                        Text(L10n.TabBar.settings)
+                    }
             }
         }
     }

@@ -9,6 +9,7 @@ enum L10n {
     enum TabBar {
         static let home = String(localized: "tabBar.home")
         static let satellites = String(localized: "tabBar.satellites")
+        static let settings = String(localized: "tabBar.settings")
     }
     
     enum Onboarding {
@@ -123,6 +124,20 @@ enum L10n {
             static let typePurposeTitle = String(localized: "satelliteDetail.statusInfo.typePurposeTitle")
             static let active = String(localized: "satelliteDetail.statusInfo.active")
             static let inactive = String(localized: "satelliteDetail.statusInfo.inactive")
+        }
+    }
+    
+    enum SettingsView {
+        static let title = String(localized: "settingsView.title")
+        
+        enum GeneralSection {
+            static let title = String(localized: "settingsView.generalSection.title")
+            static let buttonText = String(localized: "settingsView.generalSection.buttonText")
+        }
+        
+        enum AboutSection {
+            static let title = String(localized: "settingsView.aboutSection.title")
+            static let buttonText = String(localized: "settingsView.aboutSection.buttonText")
         }
     }
 }
