@@ -7,8 +7,7 @@ GroundPass is an iOS app developed in SwiftUI that predicts and displays satelli
 ## ✨ Features
 - Browse and search satellites with real-time data.  
 - Mark your favorite satellites for quick access.  
-- Modern SwiftUI interface with clean architecture.  
-- Configurable API integration via `Config.xcconfig`.
+- Modern SwiftUI interface with clean architecture. 
 
 ---
 
