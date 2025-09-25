@@ -1,0 +1,8 @@
+build/
+DerivedData/
+Config.xcconfig
+*.xcuserdata/
+*.xcuserstate
+*.xcworkspace
+*.xcdebugger
+.DS_Store

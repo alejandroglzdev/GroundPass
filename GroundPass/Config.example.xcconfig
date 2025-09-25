@@ -1,0 +1,11 @@
+//
+//  Config1.xcconfig
+//  GroundPass
+//
+//  Created by Alejandro Gonzalez2 on 25/9/25.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY = YOUR_API_KEY
