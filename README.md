@@ -54,7 +54,7 @@ Search functionality in GroundPass depends on a backend service. Follow these st
 
 ### 1️⃣ Clone the backend repository
 ```bash
-git clone https://github.com/your-username/groundpass-backend.git
+git clone https://github.com/your-username/GroundPassBackend.git
 cd groundpass-backend
 ```
 
