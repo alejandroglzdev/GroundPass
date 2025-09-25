@@ -8,10 +8,10 @@
 import Foundation
 
 enum APIConfiguration {
-    static let baseURLN2YO = "https://api.n2yo.com/rest/v1/satellite"
-    static let apiKeyN2YO = Bundle.main.infoDictionary?["API_KEY_N2YO"] as? String
+    static let baseURLN2YO = Bundle.main.infoDictionary?["BASE_URL_N2YO"] as? String ?? ""
+    static let apiKeyN2YO = Bundle.main.infoDictionary?["API_KEY_N2YO"] as? String ?? ""
     
-    static let baseURLGroundPassBackend = "http://localhost:3000"
+    static let baseURLGroundPassBackend = Bundle.main.infoDictionary?["BASE_URL_BACKEND"] as? String ?? ""
     
     static let days = 3
     static let minVisibility = 30

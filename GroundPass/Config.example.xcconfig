@@ -9,3 +9,5 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 API_KEY_N2YO = YOUR_API_KEY
+BASE_URL_N2YO = https:/$()/api.n2yo.com/rest/v1/satellite
+BASE_URL_BACKEND = http:/$()/localhost:3000
