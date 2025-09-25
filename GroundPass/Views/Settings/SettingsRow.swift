@@ -9,10 +9,11 @@ import SwiftUI
 
 struct SettingsRow: View {
     let text: String
+    let onTap: () -> Void
     
     var body: some View {
         Button(action: {
-            print("Fila pulsada")
+            onTap()
         }) {
             HStack {
                 Text(text)
@@ -28,5 +29,5 @@ struct SettingsRow: View {
 }
 
 #Preview {
-    SettingsRow(text: "Manage your favourite satellites")
+    SettingsRow(text: "Manage your favourite satellites", onTap: {})
 }

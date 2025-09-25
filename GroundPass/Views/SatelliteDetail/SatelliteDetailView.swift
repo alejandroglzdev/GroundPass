@@ -6,15 +6,41 @@
 //
 
 import SwiftUI
+import SwiftData
+
+enum FavouriteStatus {
+    case favourite
+    case notFavourite
+}
 
 public struct SatelliteDetailView: View {
+    @Environment(\.modelContext) private var context
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var viewModel: SatelliteDetailViewModel
+    
+    @Query private var favouriteSatellites: [FavouriteSatellite]
+    
+    var favouriteStatus: FavouriteStatus {
+        if favouriteSatellites.contains(where: { $0.noradId == viewModel.satellite?.noradID }) {
+            return .favourite
+        } else {
+            return .notFavourite
+        }
+    }
+    
+    var buttonPurpose: ButtonPurpose {
+        if favouriteStatus == .favourite {
+            .delete
+        }
+        else {
+            .standard
+        }
+    }
     
     init(satellite: Satellite) {
         _viewModel = StateObject(wrappedValue: SatelliteDetailViewModel(noradId: satellite.noradID))
     }
-        
+    
     public var body: some View {
         let unknownText = L10n.SatelliteDetail.unknown
         
@@ -52,8 +78,18 @@ public struct SatelliteDetailView: View {
                     StatusInfo(status: status, typePurpose: typePurpose).padding(24)
                 }
                 
-                RoundedButton(action: { }, text: L10n.SatelliteDetail.favouriteButtonText).padding(18)
-
+                RoundedButton(text: configureButtonText(), buttonPurpose: buttonPurpose, action: {
+                    if favouriteStatus == .notFavourite {
+                        if favouriteSatellites.count < 3 {
+                            addSatelliteToFavourite(noradId: viewModel.satellite?.noradID, name: viewModel.satellite?.name)
+                        } else {
+                            print("Mostrar modal...")
+                        }
+                    } else {
+                        deleteFavouriteSatellite(noradId: viewModel.satellite?.noradID)
+                    }
+                }).padding(18)
+                
             } else {
                 ProgressView().padding(24)
             }
@@ -73,5 +109,31 @@ public struct SatelliteDetailView: View {
             }
         }
         .background(Color.background)
+    }
+    
+    private func addSatelliteToFavourite(noradId: Int?, name: String?) {
+        guard let noradId = noradId, let name = name else { return }
+        
+        let favouriteSatellite = FavouriteSatellite(noradId: noradId, name: name)
+        context.insert(favouriteSatellite)
+        try? context.save()
+    }
+    
+    private func deleteFavouriteSatellite(noradId: Int?) {
+        guard let noradId else { return }
+        
+        //TODO: Hacer clase que controle el añadir y eliminar
+        if let satelliteToDelete = favouriteSatellites.first(where: { $0.noradId == noradId }) {
+            context.delete(satelliteToDelete)
+            try? context.save()
+        }
+    }
+    
+    private func configureButtonText() -> String{
+        if favouriteStatus == .favourite {
+            return L10n.SatelliteDetail.deleteFavouriteButtonText
+        } else {
+            return L10n.SatelliteDetail.addFavouriteButtonText
+        }
     }
 }

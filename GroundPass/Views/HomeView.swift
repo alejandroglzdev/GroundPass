@@ -42,7 +42,7 @@ struct HomeView: View {
                         ForEach(viewModel.passes.prefix(3), id: \.id) { pass in
                             SatellitePassRow(imageURL: nil, visualPass: pass)
                                 .onTapGesture {
-                                    router.push(.visualPassDetail(pass))
+                                    router.push(.visualPassDetailView(pass))
                                 }
                         }
                     } header: {
@@ -62,7 +62,7 @@ struct HomeView: View {
                 
                 if !isLoading && moreThanThreePasses {
                     Spacer()
-                    RoundedButton(action: { router.push(.showMoreView(viewModel.passes)) }, text: L10n.Home.showMoreButtonText)
+                    RoundedButton(text: L10n.Home.showMoreButtonText, action: { router.push(.showMoreView(viewModel.passes)) })
                         .padding(.trailing, 16)
                         .padding(.top, 12)
                 }

@@ -12,7 +12,7 @@ struct OnboardingSelectionView: View {
     @Environment(\.modelContext) private var context
     @EnvironmentObject var router: NavigationRouter
     
-    @State private var selectedSatellitesNoradId: [Int] = []
+    @State private var selectedSatellites: [FavouriteSatellite] = []
     
     @Query private var configList: [UserConfiguration]
     @Query private var favouriteSatellites: [FavouriteSatellite]
@@ -22,7 +22,7 @@ struct OnboardingSelectionView: View {
     }
     
     var isSaveButtonEnabled: Bool {
-        selectedSatellitesNoradId.count == 3
+        selectedSatellites.count == 3
     }
     
     var body: some View {
@@ -31,24 +31,20 @@ struct OnboardingSelectionView: View {
         VStack(alignment: .leading) {
             List {
                 Section {
-                    ForEach(popularSatellites) { item in
+                    ForEach(popularSatellites, id: \.id) { item in
                         SatelliteRow(item: item)
                             .padding(.trailing, 32)
                             .overlay(
                                 Rectangle()
                                     .frame(width: 2)
                                     .foregroundColor(Color.backgroundContrasting)
-                                    .opacity(selectedSatellitesNoradId.contains(where: {$0 == item.id}) ? 1 : 0)
-                                    .animation(.easeInOut(duration: 0.3), value: selectedSatellitesNoradId),
+                                    .opacity(setOpacity(for: item))
+                                    .animation(.easeInOut(duration: 0.3), value: selectedSatellites),
                                 alignment: .trailing
                                 
                             )
                             .onTapGesture(perform: {
-                                if let index = selectedSatellitesNoradId.firstIndex(where: {$0 == item.id}) {
-                                    selectedSatellitesNoradId.remove(at: index)
-                                } else if selectedSatellitesNoradId.count < 3 {
-                                    selectedSatellitesNoradId.append(item.id)
-                                }
+                                toggleSelection(for: item)
                             })
                     }
                 } header: {
@@ -60,10 +56,8 @@ struct OnboardingSelectionView: View {
             .listStyle(InsetGroupedListStyle())
             .scrollContentBackground(.hidden)
             
-            RoundedButton(action: finishOnboarding, text: L10n.OnboardingSelection.button,
-                          isEnabled: isSaveButtonEnabled,
-                          maxWidth: .infinity
-            ).padding()
+            RoundedButton(text: L10n.OnboardingSelection.button, isEnabled: isSaveButtonEnabled, maxWidth: .infinity, action: finishOnboarding)
+                .padding()
             
         }
         .navigationTitle(L10n.OnboardingSelection.topBarTitle)
@@ -80,6 +74,20 @@ struct OnboardingSelectionView: View {
             }
         }
         .background(Color.background)
+    }
+    
+    private func setOpacity(for item: Satellite) -> Double {
+        let isSelected = selectedSatellites.contains(where: {$0.noradId == item.noradID})
+        return isSelected ? 1 : 0
+    }
+    
+    private func toggleSelection(for item: Satellite) {
+        if let index = selectedSatellites.firstIndex(where: { $0.noradId == item.noradID }) {
+            selectedSatellites.remove(at: index)
+        } else if selectedSatellites.count < 3 {
+            let favourite = FavouriteSatellite(noradId: item.noradID, name: item.name)
+            selectedSatellites.append(favourite)
+        }
     }
     
     private func finishOnboarding() {
@@ -102,9 +110,9 @@ struct OnboardingSelectionView: View {
     }
     
     private func persistFavouriteSatellites() {
-        for noradId in selectedSatellitesNoradId {
-            guard !favouriteSatellites.contains(where: { $0.noradId == noradId }) else { continue }
-            let favouriteSatellite = FavouriteSatellite(noradId: noradId)
+        for satellite in selectedSatellites {
+            guard !favouriteSatellites.contains(where: { $0.noradId == satellite.noradId }) else { continue }
+            let favouriteSatellite = FavouriteSatellite(noradId: satellite.noradId, name: satellite.name)
             context.insert(favouriteSatellite)
             try? context.save()
         }

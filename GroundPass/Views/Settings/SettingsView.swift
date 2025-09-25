@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var router: NavigationRouter
     
     var body: some View {
         VStack(alignment: .center) {
@@ -34,7 +35,9 @@ struct SettingsView: View {
                 .fontWeight(.bold)
                 .padding(.top, 24)
             
-            SettingsRow(text: L10n.SettingsView.GeneralSection.buttonText)
+            SettingsRow(text: L10n.SettingsView.GeneralSection.manageFavouriteSatellitesButton, onTap: {
+                router.push(.manageFavouriteSatellitesView)
+            })
                 .padding(.vertical, 12)
         }
     }
@@ -46,7 +49,9 @@ struct SettingsView: View {
                 .fontWeight(.bold)
                 .padding(.top, 24)
             
-            SettingsRow(text: L10n.SettingsView.AboutSection.buttonText)
+            SettingsRow(text: L10n.SettingsView.AboutSection.aboutUsButton, onTap: {
+//                router.push(.)
+            })
                 .padding(.vertical, 12)
         }
     }

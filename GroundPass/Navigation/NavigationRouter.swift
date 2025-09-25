@@ -14,8 +14,9 @@ enum Route: Hashable {
     case onboardingSelectionView
     case mainView
     case showMoreView(_ passes: [VisualPass])
-    case visualPassDetail(_ pass: VisualPass)
-    case satelliteDetail(_ satellite: Satellite)
+    case visualPassDetailView(_ pass: VisualPass)
+    case satelliteDetailView(_ satellite: Satellite)
+    case manageFavouriteSatellitesView
 }
 
 class NavigationRouter: ObservableObject {

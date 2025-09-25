@@ -10,8 +10,10 @@ import SwiftData
 @Model
 class FavouriteSatellite {
     var noradId: Int
+    var name: String
     
-    init(noradId: Int) {
+    init(noradId: Int, name: String) {
         self.noradId = noradId
+        self.name = name
     }
 }

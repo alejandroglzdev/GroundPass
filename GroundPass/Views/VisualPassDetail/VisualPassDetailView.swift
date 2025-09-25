@@ -49,7 +49,7 @@ public struct VisualPassDetailView: View {
                 ProgressView().padding(24)
             }
             
-            RoundedButton(action: { }, text: L10n.VisualPassDetail.button).padding(18)
+            RoundedButton(text: L10n.VisualPassDetail.button, action: { }).padding(18)
         }
         .navigationTitle(L10n.VisualPassDetail.topBarTitle)
         .navigationBarTitleDisplayMode(.inline)

@@ -22,7 +22,7 @@ public struct ShowMoreView: View {
                     ForEach(viewModel.passes, id: \.id) { pass in
                         SatellitePassRow(imageURL: nil, visualPass: pass)
                             .onTapGesture {
-                                router.push(.visualPassDetail(pass))
+                                router.push(.visualPassDetailView(pass))
                             }
                     }
                 }

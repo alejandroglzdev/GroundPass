@@ -46,11 +46,14 @@ struct ContentView: View {
                 case .showMoreView(let passes):
                     ShowMoreView(passes: passes)
                         .environmentObject(router)
-                case .visualPassDetail(let pass):
+                case .visualPassDetailView(let pass):
                     VisualPassDetailView(pass: pass)
                         .environmentObject(router)
-                case .satelliteDetail(let satellite):
+                case .satelliteDetailView(let satellite):
                     SatelliteDetailView(satellite: satellite)
+                        .environmentObject(router)
+                case .manageFavouriteSatellitesView:
+                    ManageFavouriteSatellitesView()
                         .environmentObject(router)
                 }
             }

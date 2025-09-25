@@ -31,8 +31,7 @@ struct OnboardingView: View {
             Spacer()
             
             RoundedButton(
-                action: { router.push(.onboardingSelectionView) },
-                text: L10n.Onboarding.action
+                text: L10n.Onboarding.action, action: { router.push(.onboardingSelectionView) }
             )
             .padding(.bottom, 15)
         }

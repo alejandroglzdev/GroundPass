@@ -60,7 +60,7 @@ struct SearchSatelliteView: View {
 
                     TwoColumnList(rows: searchedSatellitesRow, onTapGesture: { id in
                         if let satellite = searchedSatelliteById[id] {
-                            router.push(.satelliteDetail(satellite))
+                            router.push(.satelliteDetailView(satellite))
                         }
                     })
                 }
@@ -70,7 +70,7 @@ struct SearchSatelliteView: View {
                 
                 TwoColumnList(rows: popularSatellitesRow, onTapGesture: { id in
                     if let satellite = popularSatelliteById[id] {
-                        router.push(.satelliteDetail(satellite))
+                        router.push(.satelliteDetailView(satellite))
                     }
                 })
             }

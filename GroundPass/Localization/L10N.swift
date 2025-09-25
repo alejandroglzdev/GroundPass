@@ -94,7 +94,8 @@ enum L10n {
     enum SatelliteDetail {
         static let topBarTitle = String(localized: "satelliteDetail.topBarTitle")
         static let unknown = String(localized: "satelliteDetail.unknown")
-        static let favouriteButtonText = String(localized: "satelliteDetail.favouriteButtonText")
+        static let addFavouriteButtonText = String(localized: "satelliteDetail.addFavouriteButtonText")
+        static let deleteFavouriteButtonText = String(localized: "satelliteDetail.deleteFavouriteButtonText")
         
         enum LaunchInfo {
             static let title = String(localized: "satelliteDetail.launchInfo.title")
@@ -132,12 +133,17 @@ enum L10n {
         
         enum GeneralSection {
             static let title = String(localized: "settingsView.generalSection.title")
-            static let buttonText = String(localized: "settingsView.generalSection.buttonText")
+            static let manageFavouriteSatellitesButton = String(localized: "settingsView.generalSection.manageFavouriteSatellitesButton")
         }
         
         enum AboutSection {
             static let title = String(localized: "settingsView.aboutSection.title")
-            static let buttonText = String(localized: "settingsView.aboutSection.buttonText")
+            static let aboutUsButton = String(localized: "settingsView.aboutSection.aboutUsButton")
         }
+    }
+    
+    enum ManageFavouriteSatellitesView {
+        static let title = String(localized: "manageFavouriteSatellitesView.title")
+        static let maxFavouriteSatellitesWarning = String(localized: "manageFavouriteSatellitesView.maxFavouriteSatellitesWarning")
     }
 }

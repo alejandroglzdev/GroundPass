@@ -26,6 +26,29 @@
         }
       }
     },
+    "International Space Station" : {
+
+    },
+    "manageFavouriteSatellitesView.maxFavouriteSatellitesWarning" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can have a maximum of 3 favorite satellites. To add a new favorite, remove one from the list below."
+          }
+        }
+      }
+    },
+    "manageFavouriteSatellitesView.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Your Favourite Satellites"
+          }
+        }
+      }
+    },
     "onboarding.action" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -92,12 +115,22 @@
         }
       }
     },
-    "satelliteDetail.favouriteButtonText" : {
+    "satelliteDetail.addFavouriteButtonText" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add to favourites"
+          }
+        }
+      }
+    },
+    "satelliteDetail.deleteFavouriteButtonText" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete from favourites"
           }
         }
       }
@@ -353,7 +386,7 @@
         }
       }
     },
-    "settingsView.aboutSection.buttonText" : {
+    "settingsView.aboutSection.aboutUsButton" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -373,7 +406,7 @@
         }
       }
     },
-    "settingsView.generalSection.buttonText" : {
+    "settingsView.generalSection.manageFavouriteSatellitesButton" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
