@@ -33,7 +33,11 @@ struct SettingsView: View {
                              bodyTextBold: L10n.AboutUsModal.bodyTextBold,
                              headerImage: "heart.fill",
                              buttonImage: "dollarsign"
-            )
+            ) {
+                if let url = URL(string: Constants.buyMeACoffeURL) {
+                    UIApplication.shared.open(url)
+                }
+            }
             .presentationDetents([.fraction(0.6)])
             .presentationDragIndicator(.visible)
         }

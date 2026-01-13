@@ -15,6 +15,7 @@ struct BottomSheetModal: View {
     let bodyTextBold: String
     let headerImage: String
     var buttonImage: String? = nil
+    let action: () -> Void
         
     var body: some View {
         VStack {
@@ -40,9 +41,7 @@ struct BottomSheetModal: View {
             Spacer()
             
             RoundedButton(text: L10n.AboutUsModal.tipButtonText, systemImageName: buttonImage, maxWidth: .infinity, action: {
-                if let url = URL(string: Constants.buyMeACoffeURL) {
-                    UIApplication.shared.open(url)
-                }
+                action()
             })
             .padding(.vertical)
             
@@ -53,7 +52,7 @@ struct BottomSheetModal: View {
                     .tint(.backgroundContrasting)
             }
         }
-        .padding(.horizontal, 16)
+        .padding(.horizontal, 22)
         .padding(.top, 42)
     }
 }
