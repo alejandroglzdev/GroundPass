@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State private var showModal = false
     @EnvironmentObject var router: NavigationRouter
     
     var body: some View {
@@ -26,6 +27,16 @@ struct SettingsView: View {
             
             Spacer()
         }
+        .sheet(isPresented: $showModal) {
+            BottomSheetModal(header: L10n.AboutUsModal.header,
+                             bodyText: L10n.AboutUsModal.bodyText,
+                             bodyTextBold: L10n.AboutUsModal.bodyTextBold,
+                             headerImage: "heart.fill",
+                             buttonImage: "dollarsign"
+            )
+            .presentationDetents([.fraction(0.6)])
+            .presentationDragIndicator(.visible)
+        }
     }
     
     var generalSection: some View {
@@ -38,7 +49,7 @@ struct SettingsView: View {
             SettingsRow(text: L10n.SettingsView.GeneralSection.manageFavouriteSatellitesButton, onTap: {
                 router.push(.manageFavouriteSatellitesView)
             })
-                .padding(.vertical, 12)
+            .padding(.vertical, 12)
         }
     }
     
@@ -50,14 +61,11 @@ struct SettingsView: View {
                 .padding(.top, 24)
             
             SettingsRow(text: L10n.SettingsView.AboutSection.aboutUsButton, onTap: {
-//                router.push(.)
+                showModal = true
             })
-                .padding(.vertical, 12)
+            .padding(.vertical, 12)
         }
     }
-    
-    
-    
 }
 
 #Preview {

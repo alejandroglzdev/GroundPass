@@ -29,6 +29,7 @@ enum ButtonPurpose {
 struct RoundedButton: View {
     let action: () -> Void
     let text: String
+    let systemImageName: String?
     var buttonPurpose: ButtonPurpose = .standard
     var isEnabled: Bool = true
     var maxWidth: CGFloat? = nil
@@ -36,12 +37,14 @@ struct RoundedButton: View {
     init(
         text: String,
         buttonPurpose: ButtonPurpose = .standard,
+        systemImageName: String? = nil,
         isEnabled: Bool = true,
         maxWidth: CGFloat? = nil,
         action: @escaping () -> Void
     ) {
         self.text = text
         self.buttonPurpose = buttonPurpose
+        self.systemImageName = systemImageName
         self.isEnabled = isEnabled
         self.maxWidth = maxWidth
         self.action = action
@@ -49,13 +52,18 @@ struct RoundedButton: View {
     
     var body: some View {
         Button(action: action) {
-            Text(text)
-                .padding()
-                .frame(maxWidth: maxWidth)
-                .background(isEnabled ? buttonPurpose.buttonColor : buttonPurpose.disabledButtonColor)
-                .foregroundColor(isEnabled ? Color.buttonText : Color.buttonTextDisabled)
-                .cornerRadius(30)
-                .fontWeight(.bold)
+            HStack(spacing: 8) {
+                if let iconName = systemImageName {
+                    Image(systemName: iconName)
+                }
+                Text(text)
+                    .fontWeight(.bold)
+            }
+            .padding()
+            .frame(maxWidth: maxWidth)
+            .background(isEnabled ? buttonPurpose.buttonColor : buttonPurpose.disabledButtonColor)
+            .foregroundColor(isEnabled ? Color.buttonText : Color.buttonTextDisabled)
+            .cornerRadius(30)
         }
         .disabled(!isEnabled)
     }

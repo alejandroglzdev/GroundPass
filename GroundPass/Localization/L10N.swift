@@ -146,4 +146,12 @@ enum L10n {
         static let title = String(localized: "manageFavouriteSatellitesView.title")
         static let maxFavouriteSatellitesWarning = String(localized: "manageFavouriteSatellitesView.maxFavouriteSatellitesWarning")
     }
+    
+    enum AboutUsModal {
+        static let header = String(localized: "aboutUsModal.header")
+        static let bodyText = String(localized: "aboutUsModal.bodyText")
+        static let bodyTextBold = String(localized: "aboutUsModal.bodyTextBold")
+        static let tipButtonText = String(localized: "aboutUsModal.tipButtonText")
+        static let closeButtonText = String(localized: "aboutUsModal.closeButtonText")
+    }
 }
