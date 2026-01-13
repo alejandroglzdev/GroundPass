@@ -12,8 +12,9 @@ struct BottomSheetModal: View {
     
     let header: String
     let bodyText: String
-    let bodyTextBold: String
+    var bodyTextBold: String? = nil
     let headerImage: String
+    let buttonText: String
     var buttonImage: String? = nil
     let action: () -> Void
         
@@ -33,14 +34,16 @@ struct BottomSheetModal: View {
                 .multilineTextAlignment(.center)
                 .padding(.vertical)
             
-            Text(bodyTextBold)
-                .bold()
-                .multilineTextAlignment(.center)
-                .padding(.bottom)
+            if let bodyTextBold = bodyTextBold {
+                Text(bodyTextBold)
+                    .bold()
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom)
+            }
             
             Spacer()
             
-            RoundedButton(text: L10n.AboutUsModal.tipButtonText, systemImageName: buttonImage, maxWidth: .infinity, action: {
+            RoundedButton(text: buttonText, systemImageName: buttonImage, maxWidth: .infinity, action: {
                 action()
             })
             .padding(.vertical)

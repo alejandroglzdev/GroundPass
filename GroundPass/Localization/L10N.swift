@@ -154,4 +154,11 @@ enum L10n {
         static let tipButtonText = String(localized: "aboutUsModal.tipButtonText")
         static let closeButtonText = String(localized: "aboutUsModal.closeButtonText")
     }
+    
+    enum ManageFavouriteSatellitesModal {
+        static let header = String(localized: "manageFavouriteSatellitesModal.header")
+        static let bodyText = String(localized: "manageFavouriteSatellitesModal.bodyText")
+        static let manageFavouriteButtonText = String(localized: "manageFavouriteSatellitesModal.manageFavouriteButtonText")
+        static let closeButtonText = String(localized: "manageFavouriteSatellitesModal.closeButtonText")
+    }
 }

@@ -30,8 +30,8 @@ struct SettingsView: View {
         .sheet(isPresented: $showModal) {
             BottomSheetModal(header: L10n.AboutUsModal.header,
                              bodyText: L10n.AboutUsModal.bodyText,
-                             bodyTextBold: L10n.AboutUsModal.bodyTextBold,
-                             headerImage: "heart.fill",
+                             bodyTextBold: L10n.AboutUsModal.bodyTextBold, headerImage: "heart.fill",
+                             buttonText: L10n.AboutUsModal.tipButtonText,
                              buttonImage: "dollarsign"
             ) {
                 if let url = URL(string: Constants.buyMeACoffeURL) {

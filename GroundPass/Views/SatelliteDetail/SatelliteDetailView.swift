@@ -17,6 +17,7 @@ public struct SatelliteDetailView: View {
     @Environment(\.modelContext) private var context
     @EnvironmentObject var router: NavigationRouter
     @StateObject private var viewModel: SatelliteDetailViewModel
+    @State private var showModal = false
     
     @Query private var favouriteSatellites: [FavouriteSatellite]
     
@@ -83,7 +84,7 @@ public struct SatelliteDetailView: View {
                         if favouriteSatellites.count < 3 {
                             addSatelliteToFavourite(noradId: viewModel.satellite?.noradID, name: viewModel.satellite?.name)
                         } else {
-                            print("Mostrar modal...")
+                            showModal = true
                         }
                     } else {
                         deleteFavouriteSatellite(noradId: viewModel.satellite?.noradID)
@@ -109,6 +110,19 @@ public struct SatelliteDetailView: View {
             }
         }
         .background(Color.background)
+        .sheet(isPresented: $showModal) {
+            BottomSheetModal(header: L10n.ManageFavouriteSatellitesModal.header,
+                             bodyText: L10n.ManageFavouriteSatellitesModal.bodyText,
+                             headerImage: "exclamationmark.triangle.fill",
+                             buttonText: L10n.ManageFavouriteSatellitesModal.manageFavouriteButtonText,
+                             buttonImage: "heart.square"
+            ) {
+                router.push(.manageFavouriteSatellitesView)
+                showModal = false
+            }
+            .presentationDetents([.fraction(0.55)])
+            .presentationDragIndicator(.visible)
+        }
     }
     
     private func addSatelliteToFavourite(noradId: Int?, name: String?) {
