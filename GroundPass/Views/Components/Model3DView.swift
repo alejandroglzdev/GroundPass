@@ -10,19 +10,20 @@ import RealityKit
 
 
 struct Model3DView: UIViewRepresentable {
-    var modelName: String
-
+    let localURL: URL?
+    let key: String
+    
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
         arView.environment.background = .color(.background)
         
-        guard let url = Bundle.main.url(forResource: modelName, withExtension: "usdz") else {
+        guard let localURL = localURL else {
             return arView
         }
         
         let modelEntity: ModelEntity
         do {
-            modelEntity = try ModelEntity.loadModel(contentsOf: url)
+            modelEntity = try ModelEntity.loadModel(contentsOf: localURL)
         } catch {
             return arView
         }

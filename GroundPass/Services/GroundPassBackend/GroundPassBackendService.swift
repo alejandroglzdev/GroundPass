@@ -6,6 +6,7 @@
 //
 
 import Combine
+import SwiftUI
 
 @MainActor
 final class GroundPassBackendService: ObservableObject {
@@ -32,6 +33,18 @@ final class GroundPassBackendService: ObservableObject {
         switch dataResult {
         case .success(let data):
             return .success(GroundPassBackendParser.parseSatellite(response: data))
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+    
+    func satelliteModel3D(modelUrl: String) async -> Result <Data?, APIError> {
+        let request = GroundPassBackendEndpoint.satelliteModel(modelUrl: modelUrl)
+        let dataResult = await networkService.request(with: request)
+        
+        switch dataResult {
+        case .success(let model3D):
+            return .success(model3D)
         case .failure(let error):
             return .failure(error)
         }

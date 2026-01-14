@@ -50,11 +50,14 @@ public struct SatelliteDetailView: View {
         VStack(alignment: .trailing) {
             if let satellite = viewModel.satellite {
                 ScrollView {
-                    Model3DView(modelName: "ISS_stationary")
-                        .frame(height: 250)
+                    let noradID = String(satellite.noradID)
+                    
+                    SatelliteModel3DSection(
+                        state: viewModel.model3DState,
+                        noradID: noradID
+                    )
                     
                     let satelliteName = satellite.name
-                    let noradID = String(satellite.noradID)
                     let country = satellite.country ?? unknownText
                     SatelliteDetailHeader(satelliteName: satelliteName, noradID: noradID, country: country).padding(24)
                     

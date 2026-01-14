@@ -23,6 +23,7 @@ struct Satellite: Identifiable, Decodable, Equatable, Hashable {
     var period: String? = nil
     var status: String? = nil
     var typePurpose: String? = nil
+    var modelUrl: String? = nil
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -36,9 +37,10 @@ struct Satellite: Identifiable, Decodable, Equatable, Hashable {
         case period = "period"
         case status = "active"
         case typePurpose = "type"
+        case modelUrl = "modelUrl"
     }
     
-    init(name: String, noradID: Int, subtitle: String? = nil, imageURL: URL = URL(string: "https://via.placeholder.com/150")!, country: String? = nil, launchDate: String? = nil, launchLocation: String? = nil, apogee: String = "", perigee: String = "", inclination: String = "", period: String = "", status: String? = nil, typePurpose: String? = nil) {
+    init(name: String, noradID: Int, subtitle: String? = nil, imageURL: URL = URL(string: "https://via.placeholder.com/150")!, country: String? = nil, launchDate: String? = nil, launchLocation: String? = nil, apogee: String = "", perigee: String = "", inclination: String = "", period: String = "", status: String? = nil, typePurpose: String? = nil, modelUrl: String? = nil) {
         self.name = name
         self.noradID = noradID
         self.subtitle = subtitle
@@ -52,6 +54,7 @@ struct Satellite: Identifiable, Decodable, Equatable, Hashable {
         self.period = period
         self.status = status
         self.typePurpose = typePurpose
+        self.modelUrl = modelUrl
     }
 
 }
