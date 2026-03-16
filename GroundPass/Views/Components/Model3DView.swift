@@ -31,7 +31,8 @@ struct Model3DView: UIViewRepresentable {
         let anchor = AnchorEntity(world: [0, 0, 0])
         anchor.addChild(modelEntity)
         arView.scene.addAnchor(anchor)
-        
+        normalizeScale(for: modelEntity)
+
         context.coordinator.modelEntity = modelEntity
 
         let panGesture = UIPanGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handlePan(_:)))
@@ -41,6 +42,16 @@ struct Model3DView: UIViewRepresentable {
         arView.addGestureRecognizer(pinchGesture)
 
         return arView
+    }
+    
+    private func normalizeScale(for entity: ModelEntity, targetSize: Float = 0.03) {
+        let bounds = entity.visualBounds(relativeTo: nil)
+        let maxDimension = max(bounds.extents.x, bounds.extents.y, bounds.extents.z)
+        guard maxDimension > 0 else {
+            entity.scale = SIMD3<Float>(repeating: 0.01)
+            return
+        }
+        entity.scale = SIMD3<Float>(repeating: targetSize / maxDimension)
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {}
