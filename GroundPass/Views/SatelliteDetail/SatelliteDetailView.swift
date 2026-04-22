@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import SceneKit
+import RealityKit
 
 enum FavouriteStatus {
     case favourite
@@ -48,12 +50,14 @@ public struct SatelliteDetailView: View {
         VStack(alignment: .trailing) {
             if let satellite = viewModel.satellite {
                 ScrollView {
-                    Image("satellite_detail_placeholder")
-                        .resizable()
-                        .scaledToFit()
+                    let noradID = String(satellite.noradID)
+                    
+                    SatelliteModel3DSection(
+                        state: viewModel.model3DState,
+                        noradID: noradID
+                    )
                     
                     let satelliteName = satellite.name
-                    let noradID = String(satellite.noradID)
                     let country = satellite.country ?? unknownText
                     SatelliteDetailHeader(satelliteName: satelliteName, noradID: noradID, country: country).padding(24)
                     

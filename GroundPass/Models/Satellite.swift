@@ -23,6 +23,7 @@ struct Satellite: Identifiable, Decodable, Equatable, Hashable {
     var period: String? = nil
     var status: String? = nil
     var typePurpose: String? = nil
+    var modelUrl: String? = nil
     
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -36,9 +37,10 @@ struct Satellite: Identifiable, Decodable, Equatable, Hashable {
         case period = "period"
         case status = "active"
         case typePurpose = "type"
+        case modelUrl = "modelUrl"
     }
     
-    init(name: String, noradID: Int, subtitle: String? = nil, imageURL: URL = URL(string: "https://via.placeholder.com/150")!, country: String? = nil, launchDate: String? = nil, launchLocation: String? = nil, apogee: String = "", perigee: String = "", inclination: String = "", period: String = "", status: String? = nil, typePurpose: String? = nil) {
+    init(name: String, noradID: Int, subtitle: String? = nil, imageURL: URL = URL(string: "https://via.placeholder.com/150")!, country: String? = nil, launchDate: String? = nil, launchLocation: String? = nil, apogee: String = "", perigee: String = "", inclination: String = "", period: String = "", status: String? = nil, typePurpose: String? = nil, modelUrl: String? = nil) {
         self.name = name
         self.noradID = noradID
         self.subtitle = subtitle
@@ -52,6 +54,7 @@ struct Satellite: Identifiable, Decodable, Equatable, Hashable {
         self.period = period
         self.status = status
         self.typePurpose = typePurpose
+        self.modelUrl = modelUrl
     }
 
 }
@@ -71,14 +74,14 @@ struct PopularSatellites {
                 imageURL: URL(string: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2021/11/cosmic_pearl/23822292-1-eng-GB/Cosmic_pearl_pillars.jpg")!
             ),
             Satellite(
-                name: "GPS IIF-1",
-                noradID: 39235,
-                subtitle: "Navigation satellite",
-                imageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/8/8d/GPS_Satellite_NASA_art-iif.jpg")!
+                name: "CloudSat",
+                noradID: 29107,
+                subtitle: "Observes clouds, precipitation, and snow.",
+                imageURL: URL(string: "https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fwww.turbosquid.com%2Fes%2F3d-models%2Fmaya-cloudsat-nasa-earth-observation%2F446537&ved=0CBYQjRxqFwoTCOjR59qcpZMDFQAAAAAdAAAAABBl&opi=89978449")!
             ),
             Satellite(
                 name: "Sputnik 1",
-                noradID: 00001,
+                noradID: 00002,
                 subtitle: "First artificial satellite",
                 imageURL: URL(string: "https://upload.wikimedia.org/wikipedia/commons/b/be/Sputnik_asm.jpg")!
             ),
@@ -90,13 +93,13 @@ struct PopularSatellites {
             ),
             Satellite(
                 name: "GOES-16",
-                noradID: 41765,
+                noradID: 41866,
                 subtitle: "Weather satellite",
                 imageURL: URL(string: "https://www.solaranywhere.com/wp-content/uploads/2018/02/NASA_GOES-16_Satellite_1170x585.jpg")!
             ),
             Satellite(
                 name: "James Webb Space Telescope",
-                noradID: 50918,
+                noradID: 50463,
                 subtitle: "Infrared space telescope",
                 imageURL: URL(string: "https://webbtelescope.org/files/live/sites/webb/files/home/news/webb-science-writers-guide/telescope-overview/_images/JWST-Cold-Side.jpg")!
             ),
@@ -108,7 +111,7 @@ struct PopularSatellites {
             ),
             Satellite(
                 name: "TDRS-3",
-                noradID: 17817,
+                noradID: 19548,
                 subtitle: "Communications satellite",
                 imageURL: URL(string: "https://www.nasa.gov/wp-content/uploads/2020/10/1-tdrs-image-1.jpg")!
             ),
